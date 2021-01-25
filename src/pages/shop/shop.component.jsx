@@ -9,14 +9,14 @@ class Shop extends React.Component{
         this.state={
             collections: SHOP_DATA,
         };
+        
     }
-
-
     render(){
-        const {collections}=this.state.collections;
-        return( 
-            collections.map((id,title, items,...otherProps)=>
-                 <CollectionsPreview key={id} title={title} items={items}/>
+        const {collections}=this.state;
+        return(
+             
+            collections.map(({id,title, items, ...otherProps})=>
+                 <CollectionsPreview key={id} title={title} items={items} {...otherProps}/>
                 )
         );
     };
