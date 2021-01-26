@@ -1,6 +1,7 @@
 import React from 'react'
 import SHOP_DATA from './shopData';
 import CollectionsPreview from '../../components/collections-preview/collections-preview.component'
+import Header from '../../components/header/header.component';
 
 
 class Shop extends React.Component{
@@ -13,6 +14,7 @@ class Shop extends React.Component{
     }
     render(){
         const {collections}=this.state;
+       
         return(
              
             collections.map(({id,title, items, ...otherProps})=>

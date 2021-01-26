@@ -2,8 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import HomePage from './pages/homepage/hompage.component';
 import Shop from './pages/shop/shop.component';
-import {Route, Link} from 'react-router-dom';
-
+import {Route, Switch, Link} from 'react-router-dom';
+import Header from './components/header/header.component';
+import SignInAndSignOut from './pages/signInAndSignOut/signInAndSignOut';
 // const ProductPage=(props)=>{
 //   console.log('Hii');
 //   return(
@@ -26,9 +27,14 @@ import {Route, Link} from 'react-router-dom';
 
 function App() {
   return (
+    
     <div>
-      <Route exact path='/' component={HomePage}/>
-      <Route exact path='/shop' component={Shop}/>
+      <Header/>
+      <Switch>
+        <Route exact path='/' component={HomePage}/>
+        <Route exact path='/shop' component={Shop}/>
+        <Route exact path='/signIn' component={SignInAndSignOut}/>
+      </Switch>
     </div>
   );
 }
