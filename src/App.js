@@ -5,7 +5,7 @@ import Shop from './pages/shop/shop.component';
 import {Route, Switch, Link} from 'react-router-dom';
 import Header from './components/header/header.component';
 import SignInAndSignOut from './pages/signInAndSignOut/signInAndSignOut';
-import {auth} from './fireBase/firebase.utils';
+import {auth, createUserProfileDocument} from './fireBase/firebase.utils';
 import React from 'react';
 // const ProductPage=(props)=>{
 //   console.log('Hii');
@@ -38,10 +38,11 @@ class App extends React.Component{
 
   unsubscribeFromAuth=null;
   componentDidMount(){
-    this.unsubscribe=auth.onAuthStateChanged(user=>
+    this.unsubscribe=auth.onAuthStateChanged(async user=>
       {
+        createUserProfileDocument(user)
         this.setState({'currentUser': user});
-        console.log(user);
+        //console.log(user);
       })
   }
 
