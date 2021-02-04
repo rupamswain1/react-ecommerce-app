@@ -47,8 +47,9 @@ class App extends React.Component{
       {
         if(userAuth)
         {
-          
+          //console.log(userAuth);
           const userRef=await createUserProfileDocument(userAuth);
+          console.log(userRef);
           userRef.onSnapshot
           (
             snapShot=>
@@ -68,12 +69,14 @@ class App extends React.Component{
           )
           
         }
-       
+        this.setState({currentUser:userAuth});
       }
-    )
+      
+    );
   }
   componentWillUnmount(){
     this.unsubscribeFromAuth();
+    
   }
 
   render(){
