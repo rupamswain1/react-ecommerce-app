@@ -49,7 +49,7 @@ class App extends React.Component{
         {
           //console.log(userAuth);
           const userRef=await createUserProfileDocument(userAuth);
-          console.log(userRef);
+          //console.log(userRef);
           userRef.onSnapshot
           (
             snapShot=>
@@ -63,7 +63,7 @@ class App extends React.Component{
                     ...snapShot.data() 
                   }
                 }
-                ,()=>{console.log(this.state);}
+                //,()=>{console.log(this.state);}
               );
             }
           )
