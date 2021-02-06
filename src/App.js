@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import {connect} from 'react-redux';
 import HomePage from './pages/homepage/hompage.component';
 import Shop from './pages/shop/shop.component';
 import {Route, Switch, Link} from 'react-router-dom';
@@ -7,6 +8,7 @@ import Header from './components/header/header.component';
 import SignInAndSignOut from './pages/signInAndSignOut/signInAndSignOut';
 import {auth, createUserProfileDocument} from './fireBase/firebase.utils';
 import 'firebase/firestore';
+import SetCurrentUser from './redux/user/user.actions'
 
 import React from 'react';
 // const ProductPage=(props)=>{
@@ -31,16 +33,11 @@ import React from 'react';
 
 class App extends React.Component{
 
-  constructor(){
-    super();
-    this.state={
-      'currentUser':null,
-    }
-  };
 
   unsubscribeFromAuth=null;
   componentDidMount()
   {
+    const {SetCurrentUser}= this.props;
     this.unsubscribeFromAuth=auth.onAuthStateChanged
     (
       async userAuth=>
@@ -54,7 +51,7 @@ class App extends React.Component{
           (
             snapShot=>
             {
-              this.setState
+              SetCurrentUser
               (
                 {
                   currentUser:
@@ -69,7 +66,7 @@ class App extends React.Component{
           )
           
         }
-        this.setState({currentUser:userAuth});
+        SetCurrentUser(userAuth);
       }
       
     );
@@ -83,7 +80,7 @@ class App extends React.Component{
     return (
       
       <div>
-        <Header currentUser={this.state.currentUser}/>
+        <Header/>
         <Switch>
           <Route exact path='/' component={HomePage}/>
           <Route exact path='/shop' component={Shop}/>
@@ -94,4 +91,8 @@ class App extends React.Component{
   }
 };
 
-export default App;
+const mapDispatchToProps=dispatch=>({
+  SetCurrentUser: user=> dispatch(SetCurrentUser(user))
+}); 
+
+export default connect(null, mapDispatchToProps)(App);
