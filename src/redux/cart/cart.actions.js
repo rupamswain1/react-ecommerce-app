@@ -4,4 +4,7 @@ const toggleCartHidden=()=>({
 })
 export default toggleCartHidden;
 
-
+const addItemsToCart=(item)=>({
+   type:CartActionType.addItemsToCart,
+   action:item
+})
