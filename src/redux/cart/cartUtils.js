@@ -5,8 +5,8 @@ export const updateCartWithItems=(cartItems,item)=>{
     if(existingItem){
         return cartItems.map(cartItem=>
             (cartItem.id===item.id && cartItem.name===item.name)?
-            {...cartItem, quantity:parseInt(cartItem.quantity)+1}:
-            {cartItem}        
+            {...cartItem, quantity:cartItem.quantity+1}:
+            {...cartItem}        
         )}
     //console.log(item);
     return [...cartItems, {...item,quantity:1}]
