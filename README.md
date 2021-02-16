@@ -74,4 +74,5 @@ Installed Additional Library:
 1.FireBase
 2. react-router, react-router-dom
 3. redux redux-logger react-redux
+4. reselect
 
