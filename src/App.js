@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {connect} from 'react-redux';
 import HomePage from './pages/homepage/hompage.component';
+import CheckOutPage from './pages/checkOutPage/checkoutpage.component';
 import Shop from './pages/shop/shop.component';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import Header from './components/header/header.component';
@@ -88,6 +89,7 @@ class App extends React.Component{
           <Route exact path='/' component={HomePage}/>
           <Route exact path='/shop' component={Shop}/>
           <Route exact path='/signIn' render={()=>this.props.currentUser? (<Redirect to='/'/>):(<SignInAndSignOut/>)}/>
+          <Route exact path='/checkout' component={CheckOutPage}/>
         </Switch>
       </div>
     );
