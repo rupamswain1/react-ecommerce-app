@@ -10,18 +10,18 @@
         padding: 10px 0;
         display:flex;
         justify-content: space-between;
-        border-bottom: 1px,solid darkgrey;
+        border-bottom: 1px solid darkgrey;
 
         .header-block{
             text-transform:capitalize;
             width: 23%,
         }
-        &last-size{
+        &last-child{
             width: 8%
         }
     }
     
-.total{
+.total-price{
     margin-top:30px;
     margin-left:auto;
     font-size: 35px;
