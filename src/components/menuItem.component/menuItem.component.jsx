@@ -7,8 +7,8 @@ const MenuItem = ({title,imageUrl,size,id,history,link,match}) => {
     
     return(
         
-    <div className={`${size} menu-item`} onClick={()=> history.push(`${match.url}${link}` )}>
-        <div className={`${size} background-image`} id={`backgroundimage${id}`} 
+    <div className={`${id} menu-item`} onClick={()=> history.push(`${match.url}${link}` )}>
+        <div className={`${id} background-image`} id={`backgroundimage${id}`} 
         
         style={{backgroundImage:`url(${imageUrl})`}}>
         consloe.log(match);
