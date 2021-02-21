@@ -75,4 +75,5 @@ Installed Additional Library:
 2. react-router, react-router-dom
 3. redux redux-logger react-redux
 4. reselect
+5. redux-persists
 
