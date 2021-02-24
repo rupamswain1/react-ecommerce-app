@@ -76,4 +76,5 @@ Installed Additional Library:
 3. redux redux-logger react-redux
 4. reselect
 5. redux-persists
+6. react-stripe-checkout
 
