@@ -78,3 +78,5 @@ Installed Additional Library:
 5. redux-persists
 6. react-stripe-checkout
 
+Deployed to Heroku on Below URL:
+https://rs-ecomm.herokuapp.com
