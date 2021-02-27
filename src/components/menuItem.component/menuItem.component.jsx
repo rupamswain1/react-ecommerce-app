@@ -1,22 +1,26 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom'
-import './menuItem.style.scss';
-
+//import './menuItem.style.scss';
+import {MenuItemContainer,
+    BackgroundImageContainer,
+    ContentContainer,
+    TitleContainer,
+    SubTitleContainer
+} from './menuItem.style'
 
 const MenuItem = ({title,imageUrl,size,id,history,link,match}) => {
     
     return(
         
-    <div className={`${id} menu-item`} onClick={()=> history.push(`${match.url}${link}` )}>
-        <div className={`${id} background-image`} id={`backgroundimage${id}`} 
-        
-        style={{backgroundImage:`url(${imageUrl})`}}>
-        consloe.log(match);
-        </div>
-        <div className='content' id={`content${id}`}>
-            <h1 className='title' id={`title${id}`}>{title.toUpperCase()}</h1>
-            <span className='subtitles' id={`subtitles${id}`}>SHOP NOW</span>
-        </div>
-    </div>)
+    <MenuItemContainer size={size} onClick={()=> history.push(`${match.url}${link}` )}>
+        <BackgroundImageContainer
+        className='backgroundImg'
+        imageUrl={imageUrl}>
+        </BackgroundImageContainer>
+        <ContentContainer className='content' id={`content${id}`}>
+            <TitleContainer id={`title${id}`}>{title.toUpperCase()}</TitleContainer>
+            <SubTitleContainer id={`subtitles${id}`}>SHOP NOW</SubTitleContainer>
+        </ContentContainer>
+    </MenuItemContainer>)
 };
-export default withRouter(MenuItem); 
+export default withRouter(MenuItem);
