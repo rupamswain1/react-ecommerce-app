@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import { batch } from 'react-redux';
 
 const config={
     apiKey: "AIzaSyAIuoyjbJOFI0gDtucXJfnERcVMqbpnbU0",
@@ -48,4 +49,33 @@ const config={
   provider.setCustomParameters({prompt:'select_account'});
   export const signInWithGoogle=()=>auth.signInWithPopup(provider);
 
+  // util to add shop data to Firebase
+  export const addCollectionAndDocument=async (collectionKey, objectsToAdd)=>{
+     const collectionRef=firestore.collection(collectionKey);
+     //console.log(collectionRef);
+      const batch=firestore.batch()
+      objectsToAdd.forEach(obj=>{
+        //console.log(obj)
+        const newDocRef=collectionRef.doc();
+        batch.set(newDocRef,obj);
+      }
+      );
+      return await batch.commit()
+  }
+
+  //Get collectionData from Firestore
+  export const convertCollectionsSnapshotToMap=collections=>{
+    //console.log(collections)
+    const transformedCollection=collections.docs.map(doc=>{
+      const {title,items}=doc.data();
+      return{
+        routeName: encodeURI(title.toLowerCase()),
+        id: doc.id,
+        title,
+        items
+      }
+    });
+    console.log(transformedCollection);
+
+  }
   export default firebase;
