@@ -1,18 +1,20 @@
-import SHOP_DATA from './shopData';
+//import SHOP_DATA from './shopData';
 import {UpadteCollections} from './shop.actions';
 import ShopActionTypes from './shop.type'
 const INITIAL_STATE={
-    shopData:SHOP_DATA
+    shopData:null //SHOP_DATA
 }
 
 const ShopDataRedux=(state=INITIAL_STATE,action)=>{
     switch(action.type){
         case ShopActionTypes.UPADTE_COLLECTIONS:
+            console.log('update collections')
             return{
                 ...state,
-                collections:action.payload
+                shopData:action.payload
             }
         default:
+            
             return state;
     }
 }

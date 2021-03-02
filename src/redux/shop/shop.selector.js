@@ -12,12 +12,12 @@ export const SelectShopData=createSelector(
 
 export const SelectShopDataForPreview=createSelector(
     [SelectShopData],
-    shopData=>Object.keys(shopData).map(key=>shopData[key])
+    shopData=>(shopData?Object.keys(shopData).map(key=>shopData[key]):[])
 )
 
 export const SelectCollection=collectionUrlParam=>
 createSelector(
     [SelectShopData],
-    collections=>collections[collectionUrlParam]
+    collections=>(collections?collections[collectionUrlParam]:null)
         
 )
