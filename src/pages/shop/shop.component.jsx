@@ -18,6 +18,12 @@ class Shop extends React.Component{
     componentDidMount(){
         const {updateCollections}= this.props;
         const collectionRef=firestore.collection('Collection');
+
+        //To Fetch the Data using firebase API
+        // fetch("https://firestore.googleapis.com/v1/projects/react-ecomm-4f435/databases/(default)/documents/Collection")
+        // .then(Response=>Response.json()).
+        // then(collections=>console.log(collections));
+
         this.unsubscribeFromSnapshot=collectionRef.onSnapshot(
             async snapshot=>{
                 //console.log(snapshot);

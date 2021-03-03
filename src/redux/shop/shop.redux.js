@@ -2,17 +2,31 @@
 import {UpadteCollections} from './shop.actions';
 import ShopActionTypes from './shop.type'
 const INITIAL_STATE={
-    shopData:null //SHOP_DATA
+    shopData:null, //SHOP_DATA
+    isFetching:false,
+    errorMessage:undifined,
 }
 
 const ShopDataRedux=(state=INITIAL_STATE,action)=>{
     switch(action.type){
-        case ShopActionTypes.UPADTE_COLLECTIONS:
+        case ShopActionTypes.FETCH_COLLECTION_START:
             console.log('update collections')
             return{
                 ...state,
-                shopData:action.payload
+                isFetching:true
             }
+        case ShopActionTypes.FETCH_COLLECTION_SUCCESS:
+            return{
+                ...state,
+                isFetching:false,
+                shopData:action.payload,
+            }
+        case ShopActionTypes.FETCH_COLLECTION_FALIURE:
+            return{
+                ...state,
+                isFetching:false
+                errorMessage:action.payload,
+            } 
         default:
             
             return state;
