@@ -4,7 +4,7 @@ import ShopActionTypes from './shop.type'
 const INITIAL_STATE={
     shopData:null, //SHOP_DATA
     isFetching:false,
-    errorMessage:undifined,
+    errorMessage:undefined,
 }
 
 const ShopDataRedux=(state=INITIAL_STATE,action)=>{
@@ -24,7 +24,7 @@ const ShopDataRedux=(state=INITIAL_STATE,action)=>{
         case ShopActionTypes.FETCH_COLLECTION_FALIURE:
             return{
                 ...state,
-                isFetching:false
+                isFetching:false,
                 errorMessage:action.payload,
             } 
         default:
