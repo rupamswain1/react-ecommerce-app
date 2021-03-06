@@ -79,6 +79,6 @@ Installed Additional Library:
 6. react-stripe-checkout
 7. styled-components
 8. redux-thunk
-
+9. redux-saga
 Deployed to Heroku on Below URL:
 https://rs-ecomm.herokuapp.com
