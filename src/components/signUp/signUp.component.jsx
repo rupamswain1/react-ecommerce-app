@@ -1,9 +1,11 @@
 import React from 'react';
+import {connect} from 'react-redux'; 
 //import './signUp.style.scss';
 import {auth, createUserProfileDocument} from '../../fireBase/firebase.utils';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button-component';
 import {SignUpContainer,TitleContainer} from './signUp.style';
+
 class SignUp extends React.Component
 {
     constructor(props)
@@ -101,4 +103,6 @@ class SignUp extends React.Component
         );
     }
 }
+
+
 export default SignUp; 

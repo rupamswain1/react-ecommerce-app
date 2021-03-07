@@ -10,7 +10,7 @@ import SignInAndSignOut from './pages/signInAndSignOut/signInAndSignOut';
 import {auth, createUserProfileDocument} from './fireBase/firebase.utils';
 //import {auth, createUserProfileDocument, addCollectionAndDocument} from './fireBase/firebase.utils';
 import 'firebase/firestore';
-import SetCurrentUser from './redux/user/user.actions'
+import {SignInSuccess, SetCurrentUser} from './redux/user/user.actions'
 
 import {createStructuredSelector} from 'reselect';
 import {SelectUserInfo} from './redux/user/user.selector';
@@ -44,48 +44,48 @@ class App extends React.Component{
   unsubscribeFromAuth=null;
   componentDidMount()
   {
-    const {SetCurrentUser, collectionArray}= this.props;
-    this.unsubscribeFromAuth=auth.onAuthStateChanged
-    (
-      async userAuth=>
-      {
-        if(userAuth)
-        {
-          //console.log(userAuth);
-          const userRef=await createUserProfileDocument(userAuth);
-          //console.log(userRef);
-          userRef.onSnapshot
-          (
-            snapShot=>
-            {
-              SetCurrentUser
-              (
-                {
-                  currentUser:
-                  {
-                    id:snapShot.id,
-                    ...snapShot.data() 
-                  }
-                }
-                //,()=>{console.log(this.state);}
-              );
-            }
-          )
+    const {SetCurrentUser}= this.props;
+  //   this.unsubscribeFromAuth=auth.onAuthStateChanged
+  //   (
+  //     async userAuth=>
+  //     {
+  //       if(userAuth)
+  //       {
+  //         //console.log(userAuth);
+  //         const userRef=await createUserProfileDocument(userAuth);
+  //         //console.log(userRef);
+  //         userRef.onSnapshot
+  //         (
+  //           snapShot=>
+  //           {
+  //             SetCurrentUser
+  //             (
+  //               {
+  //                 currentUser:
+  //                 {
+  //                   id:snapShot.id,
+  //                   ...snapShot.data() 
+  //                 }
+  //               }
+  //               //,()=>{console.log(this.state);}
+  //             );
+  //           }
+  //         )
           
-        }
-        SetCurrentUser(userAuth);
-        //addCollectionAndDocument('Collection',collectionArray.map(({title,items})=>({title,items})));
-      }
+  //       }
+  //       SetCurrentUser(userAuth);
+  //       //addCollectionAndDocument('Collection',collectionArray.map(({title,items})=>({title,items})));
+  //     }
       
-    );
+  //   );
   }
   componentWillUnmount(){
-    this.unsubscribeFromAuth();
+   // this.unsubscribeFromAuth()
     
   }
 
   render(){
-    return (
+      return (
       
       <div>
         <Header/>
@@ -106,7 +106,7 @@ const mapStateToProps=createStructuredSelector({
 
 })
 const mapDispatchToProps=dispatch=>({
-  SetCurrentUser: user=> dispatch(SetCurrentUser(user))
+  SetCurrentUser: user=> dispatch(SignInSuccess(user))
 }); 
 
 export default connect(mapStateToProps, mapDispatchToProps)(App); 
