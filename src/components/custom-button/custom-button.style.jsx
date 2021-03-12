@@ -47,7 +47,7 @@ export const CustomButtonContainer=styled.button`
     letter-spacing: 0.5px;
     line-height: 50px;
     padding: 0 35px 0 35px;
-    font-size: 15px;
+    font-size: 14px;
    
     text-transform: uppercase;
     font-family: 'Open Sans Condensed';

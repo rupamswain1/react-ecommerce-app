@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import React, {useEffect} from 'react'
 import './App.css';
 import {connect} from 'react-redux';
 import HomePage from './pages/homepage/hompage.component';
@@ -17,7 +18,6 @@ import {SelectUserInfo} from './redux/user/user.selector';
 //import {SelectShopDataForPreview} from './redux/shop/shop.selector';
 
 
-import React from 'react';
 // const ProductPage=(props)=>{
 //   console.log('Hii');
 //   return(
@@ -38,14 +38,16 @@ import React from 'react';
       // <Route path='/productPage/:product' component={Product}/>
 //   };
 
-class App extends React.Component{
-
-
-  unsubscribeFromAuth=null;
-  componentDidMount()
-  {
-    const {checkUserSession}= this.props;
-    checkUserSession();
+//class App extends React.Component{
+const App =({checkUserSession,currentUser})=>{
+  
+  //unsubscribeFromAuth=null;
+  useEffect(()=>{checkUserSession();},[checkUserSession])
+  
+  // componentDidMount()
+  // {
+  //   const {checkUserSession}= this.props;
+  //   checkUserSession();
   //   this.unsubscribeFromAuth=auth.onAuthStateChanged
   //   (
   //     async userAuth=>
@@ -76,31 +78,28 @@ class App extends React.Component{
   //       }
   //       SetCurrentUser(userAuth);
   //       //addCollectionAndDocument('Collection',collectionArray.map(({title,items})=>({title,items})));
-  //     }
+  //    
       
   //   );
-  }
-  componentWillUnmount(){
+  
+  //componentWillUnmount(){
    // this.unsubscribeFromAuth()
     
-  }
+  
 
-  render(){
       return (
-      
       <div>
         <Header/>
         <Switch>
           <Route exact path='/' component={HomePage}/>
           <Route path='/shop' component={Shop}/>
-          <Route exact path='/signIn' render={()=>this.props.currentUser? (<Redirect to='/'/>):(<SignInAndSignOut/>)}/>
+          <Route exact path='/signIn' render={()=>currentUser?(<Redirect to='/'/>):(<SignInAndSignOut/>)}/>
           <Route exact path='/checkout' component={CheckOutPage}/>
         </Switch>
       </div>
     );
+    
   }
-};
-
 const mapStateToProps=createStructuredSelector({
   currentUser:SelectUserInfo,
   //collectionArray:SelectShopDataForPreview

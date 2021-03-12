@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import CollectionsOverview from '../../components/collectionsOverview/collectionsOverview.component'
 import {Route} from 'react-router-dom'
 import CategoryPage from '../category/categoryPage.component'
@@ -12,21 +12,15 @@ import CollectionsOverviewContainer from '../../components/collectionsOverview/c
 import CategoryPageContainer from '../../pages/category/categoryPage.component'
 const CollectionOverviewWithSpinner=WithSpinner(CollectionsOverview);
 const CategoryPageWithSpinner=WithSpinner(CategoryPage);
-class Shop extends React.Component{
-    
-    componentDidMount(){
-        console.log('shop.component component Did Mount')
-        //To Fetch the Data using firebase API
-        // fetch("https://firestore.googleapis.com/v1/projects/react-ecomm-4f435/databases/(default)/documents/Collection")
-        // .then(Response=>Response.json()).
-        // then(collections=>console.log(collections));
-        const {fetchCollectionStart}=this.props;
-        fetchCollectionStart();
-    }
 
-    render(){
-        const {match}=this.props;
-        
+const Shop =({fetchCollectionStart,isCollectionFetching,match})=>{
+    
+    useEffect(()=>{
+        fetchCollectionStart()
+    },[fetchCollectionStart])
+
+
+   
         return(
             <div className='shop-page'>   
             <Route exact path={`${match.path}`} component={CollectionOverviewWithSpinner}/>
@@ -34,7 +28,7 @@ class Shop extends React.Component{
             </div>
         );
     }
-}
+
 
 const mapStateTorProps=createStructuredSelector({
     isCollectionFetching: SelectIsCollectionFetching,
