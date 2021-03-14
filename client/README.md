@@ -80,6 +80,7 @@ Installed Additional Library:
 7. styled-components
 8. redux-thunk
 9. redux-saga
+10. axios
 
 Server command:
 1. npm i -g nodemon
