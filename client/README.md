@@ -81,7 +81,8 @@ Installed Additional Library:
 8. redux-thunk
 9. redux-saga
 10. axios
-
+11. context API and graphql covered in git project https://github.com/rupamswain1/react-concepts-from-zero-to-mastery-udemy.git
+12. for graph ql added dependency: apollo-boost react-apollo graphql
 Server command:
 1. npm i -g nodemon
 Deployed to Heroku on Below URL:
