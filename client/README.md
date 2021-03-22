@@ -83,6 +83,7 @@ Installed Additional Library:
 10. axios
 11. context API and graphql covered in git project https://github.com/rupamswain1/react-concepts-from-zero-to-mastery-udemy.git
 12. for graph ql added dependency: apollo-boost react-apollo graphql
+13. lodash - for use with graphql
 Server command:
 1. npm i -g nodemon
 Deployed to Heroku on Below URL:
