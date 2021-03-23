@@ -2,7 +2,7 @@ import React from 'react';
 import {createStructuredSelector} from 'reselect';
 
 //import './header.style.scss';
-import {HeadetContainer,LinkContainer,OptionsCotainer,OptionLinkContainer} from './header.style'
+import {HeadetContainer,LogoContainer,OptionsCotainer,OptionLinkContainer} from './header.style'
 import {Link} from 'react-router-dom';
 import {ReactComponent as Logo} from '../../assets/crown.svg';
 import {auth} from '../../fireBase/firebase.utils';
@@ -17,9 +17,9 @@ const Header= ({currentUser, hidden,signOutUser})=>{
   
   return(
     <HeadetContainer>
-        <LinkContainer to='/'>
+        <LogoContainer to='/'>
             <Logo className='logo'/>
-        </LinkContainer>
+        </LogoContainer>
         <OptionsCotainer>
             <OptionLinkContainer to='/shop'>
                 SHOP

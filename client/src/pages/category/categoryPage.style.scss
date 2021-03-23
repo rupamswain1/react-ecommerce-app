@@ -13,5 +13,10 @@
         & .collection-tem{
             margin-bottom: 30px;
         }
+    @media(max-width:500px){
+        display: grid;
+        grid-template-columns:1fr 1fr;
+        grid-gap: 10px;
+    }
     }
 } 

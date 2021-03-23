@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import React, {useEffect} from 'react'
-import './App.css';
+//import './App.css';
+import {GlobalStyle} from './global.style';
 import {connect} from 'react-redux';
 import HomePage from './pages/homepage/hompage.component';
 import CheckOutPage from './pages/checkOutPage/checkoutpage.component';
@@ -88,7 +89,9 @@ const App =({checkUserSession,currentUser})=>{
   
 
       return (
+      
       <div>
+      <GlobalStyle/>
         <Header/>
         <Switch>
           <Route exact path='/' component={HomePage}/>

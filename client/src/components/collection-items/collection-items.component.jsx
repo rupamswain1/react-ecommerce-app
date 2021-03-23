@@ -22,7 +22,7 @@ const CollectionItems= ({item,addItemsToCart})=>
             />
             <ItemFooterContainer>
                 <NameContainer>{name}</NameContainer>
-                <PriceContainer>{price}</PriceContainer>
+                <PriceContainer>&#8377;{`${price}`}</PriceContainer>
                 </ItemFooterContainer>
             <CustomButtonContainer onClick={()=>addItemsToCart(item)} inverted>Add To Cart</CustomButtonContainer>
         </CollectionItemsContainer>

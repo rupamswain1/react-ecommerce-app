@@ -6,7 +6,8 @@ import CartItem from '../cart-item/cart-item.component';
 //import './cartDropDown.style.scss';
  import {CartDropDownContainer,
     CartItemsContainer,
-    EmptyCartMessageContainer
+    EmptyCartMessageContainer,
+    CustomButtonContainerCartDD
 } from './cartDropDown.style'
 
 import {connect} from 'react-redux';
@@ -28,10 +29,11 @@ const CartDropDown=({cartItems,history,dispatch})=>{
         
         }    
         </CartItemsContainer>
-        <CustomButton onClick={()=>{
+        
+        <CustomButtonContainerCartDD onClick={()=>{
             history.push('/checkout');
             dispatch(toggleCartHidden());
-        }}>GO TO CHECKOUT</CustomButton>
+        }}>GO TO CHECKOUT</CustomButtonContainerCartDD>
     </CartDropDownContainer>
 
 )}
