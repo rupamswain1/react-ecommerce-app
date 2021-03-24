@@ -1,21 +1,27 @@
 import logo from './logo.svg';
-import React, {useEffect} from 'react'
+import React, {useEffect,lazy,Suspense} from 'react'
 //import './App.css';
 import {GlobalStyle} from './global.style';
 import {connect} from 'react-redux';
-import HomePage from './pages/homepage/hompage.component';
-import CheckOutPage from './pages/checkOutPage/checkoutpage.component';
-import Shop from './pages/shop/shop.component';
+//import HomePage from './pages/homepage/hompage.component';
+//import CheckOutPage from './pages/checkOutPage/checkoutpage.component';
+//import Shop from './pages/shop/shop.component';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import Header from './components/header/header.component';
-import SignInAndSignOut from './pages/signInAndSignOut/signInAndSignOut';
+//import SignInAndSignOut from './pages/signInAndSignOut/signInAndSignOut';
 import {auth, createUserProfileDocument} from './fireBase/firebase.utils';
 //import {auth, createUserProfileDocument, addCollectionAndDocument} from './fireBase/firebase.utils';
 import 'firebase/firestore';
 import {SignInSuccess, checkUserSession} from './redux/user/user.actions'
+import Spinner from './components/spinner/spinner.component';
 
 import {createStructuredSelector} from 'reselect';
 import {SelectUserInfo} from './redux/user/user.selector';
+
+const HomePage=lazy(()=>import('./pages/homepage/hompage.component'));
+const Shop=lazy(()=>import('./pages/shop/shop.component'));
+const SignInAndSignOut=lazy(()=>import('./pages/signInAndSignOut/signInAndSignOut'));
+const CheckOutPage=lazy(()=>import('./pages/checkOutPage/checkoutpage.component'));
 //import {SelectShopDataForPreview} from './redux/shop/shop.selector';
 
 
@@ -94,10 +100,12 @@ const App =({checkUserSession,currentUser})=>{
       <GlobalStyle/>
         <Header/>
         <Switch>
-          <Route exact path='/' component={HomePage}/>
-          <Route path='/shop' component={Shop}/>
-          <Route exact path='/signIn' render={()=>currentUser?(<Redirect to='/'/>):(<SignInAndSignOut/>)}/>
-          <Route exact path='/checkout' component={CheckOutPage}/>
+        <Suspense fallback={<Spinner/>}>
+            <Route exact path='/' component={HomePage}/>
+            <Route path='/shop' component={Shop}/>
+            <Route exact path='/signIn' render={()=>currentUser?(<Redirect to='/'/>):(<SignInAndSignOut/>)}/>
+            <Route exact path='/checkout' component={CheckOutPage}/>
+          </Suspense>
         </Switch>
       </div>
     );
