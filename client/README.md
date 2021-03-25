@@ -81,6 +81,7 @@ Installed Additional Library:
 8. redux-thunk
 9. redux-saga
 10. axios
+11.compression
 11. context API and graphql covered in git project https://github.com/rupamswain1/react-concepts-from-zero-to-mastery-udemy.git
 12. for graph ql added dependency: apollo-boost react-apollo graphql
 13. lodash - for use with graphql

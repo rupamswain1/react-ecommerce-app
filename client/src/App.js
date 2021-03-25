@@ -17,7 +17,7 @@ import Spinner from './components/spinner/spinner.component';
 
 import {createStructuredSelector} from 'reselect';
 import {SelectUserInfo} from './redux/user/user.selector';
-
+import ErrorBoundary from './components/error-boundary/error-boundary';
 const HomePage=lazy(()=>import('./pages/homepage/hompage.component'));
 const Shop=lazy(()=>import('./pages/shop/shop.component'));
 const SignInAndSignOut=lazy(()=>import('./pages/signInAndSignOut/signInAndSignOut'));
@@ -100,12 +100,14 @@ const App =({checkUserSession,currentUser})=>{
       <GlobalStyle/>
         <Header/>
         <Switch>
+        <ErrorBoundary>
         <Suspense fallback={<Spinner/>}>
             <Route exact path='/' component={HomePage}/>
             <Route path='/shop' component={Shop}/>
             <Route exact path='/signIn' render={()=>currentUser?(<Redirect to='/'/>):(<SignInAndSignOut/>)}/>
             <Route exact path='/checkout' component={CheckOutPage}/>
           </Suspense>
+          </ErrorBoundary>
         </Switch>
       </div>
     );
