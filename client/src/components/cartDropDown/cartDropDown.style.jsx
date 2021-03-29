@@ -29,7 +29,7 @@ export const EmptyCartMessageContainer=styled.span`
 
 export const CustomButtonContainerCartDD=styled(CustomButton)`
     
-    @media screen and (max-width:500px){
+    @media screen and (max-width:400px){
         display:block;
         opacity:0.9;
         min-width:unset;
