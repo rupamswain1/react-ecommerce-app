@@ -1,19 +1,18 @@
 import {shallow, mount,render} from 'enzyme';
 import React from 'react';
-import StripeCheckOutButton from '../components/stripeButton/stripeButton.component';
+import CollectionsPreview from '../components/collections-preview/collections-preview.component';
 import {configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 //import Adapter from 'enzyme-adapter-react-16';
 
-if('expect to render StripChekcOut',()=>{
+configure({adapter:new Adapter()});
+
+it('expect to render StripChekcOut',()=>{
     const mockRobots=[{
-        price:10000
+        title:'hats',
+        items:[]
     }]
-    expect(shallow(<StripeCheckOutButton price={price}/>)).toMatchSnapshot(1)
+    expect(shallow(<CollectionsPreview title={mockRobots[0].title} items={mockRobots[0].items}/>)).toMatchSnapshot('1')
 });
 
 
-if('expect to render StripChekcOut',()=>{
-
-    expect(shallow(<StripeCheckOutButton price={price}/>)).toMatchSnapshot(1)
-})
