@@ -54,5 +54,10 @@ export const OptionsCotainer=styled.div`
 export const OptionLinkContainer=styled(Link)`
     padding: 10px 15px;
     cursor: pointer;
+    @media screen and (max-width:360px){
+        height:30px;
+        padding: 10px 10px;
+        margin-bottom:0px
+    }
 `;
 

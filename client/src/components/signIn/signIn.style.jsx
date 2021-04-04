@@ -6,6 +6,10 @@ export const SignInContainer=styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 3%;
+    @media(max-width:360px){
+        width: 70vw;
+        
+    }
 `;
 
 export const TitleContainer=styled.h2`
@@ -15,4 +19,11 @@ export const TitleContainer=styled.h2`
 export const ButtonContainer=styled.div`
     display:flex;    
     justify-content: space-between;
+    @media(max-width:360px){
+        display:grid;
+        grid-template-columns:1fr;
+        grid-gap: 00px;
+        margin: auto;
+        width: 100%;
+    }
 `;

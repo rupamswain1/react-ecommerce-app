@@ -20,6 +20,23 @@
             width: 8%
         }
     }
+    .noItemsContainer{
+
+        .noItemsMessage{
+            text-align: center;
+            font-size: 40px;
+        }
+        .navigateToHomeContainer{
+            text-align: center;
+            font-size: 30px;
+            
+            text-decoration: underline;
+            .navigateToHomeText{
+                color: blue;
+            }
+        }
+    }
+    
     
 .total-price{
     margin-top:30px;
@@ -41,9 +58,17 @@ button{
     width: 90%
 }
 .checkOutButton{
+    margin:auto;
     @media(max-width:500px){
         padding-left:40%;
         
     }
+    @media(max-width:360px){
+        padding-left:0%;
+        padding-bottom: 50px;
+    }
+}
+.checkOutButtonDisable{
+    display: none;
 }
 }

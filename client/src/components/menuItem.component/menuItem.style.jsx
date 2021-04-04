@@ -33,6 +33,10 @@ export const MenuItemContainer=styled.div`
    height:200px;
    width:200px;
 }
+@media screen and (max-width:360px){
+    height:200px;
+    width:100px;
+ }
 `;
 
 export const BackgroundImageContainer=styled.div`

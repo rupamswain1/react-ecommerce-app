@@ -19,7 +19,7 @@ const CollectionOverviewWithSpinner=WithSpinner(CollectionsOverview);
 const CategoryPageWithSpinner=WithSpinner(CategoryPage);
 
 
-const Shop =({fetchCollectionStart,isCollectionFetching,match})=>{
+const Shop =({fetchCollectionStart,match})=>{
     
     useEffect(()=>{
         fetchCollectionStart()
@@ -39,13 +39,10 @@ const Shop =({fetchCollectionStart,isCollectionFetching,match})=>{
     }
 
 
-const mapStateTorProps=createStructuredSelector({
-    isCollectionFetching: SelectIsCollectionFetching,
-    
-})
+
 const mapDispatchToProps = dispatch => ({
     fetchCollectionStart:()=>dispatch(fetchCollectionStart())
   });
 
 
-export default connect(mapStateTorProps,mapDispatchToProps)(Shop);
+export default connect(null,mapDispatchToProps)(Shop);

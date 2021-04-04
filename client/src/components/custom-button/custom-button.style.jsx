@@ -59,4 +59,9 @@ export const CustomButtonContainer=styled.button`
     display:flex;
     justify-content: center;
     ${getButtonStyle}
+    @media(max-width:360px){
+        min-width: 200px;
+        width: auto;
+        height: 50px;
+    }
 `;
