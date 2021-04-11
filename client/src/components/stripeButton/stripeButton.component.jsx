@@ -16,8 +16,9 @@ const StripeCheckOutButton=({price,clearCart})=>{
                 token
             }
         }).then(response=>{
-            alert('Payment Successful');
             clearCart();
+            alert('Payment Successful');
+            
         }).catch(error=>{
             console.log('Payment Error ',JSON.parse(error));
             alert('There was an Issue with your payment. Please make sure to use the provided credid card')
